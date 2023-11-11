@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class TheList {
+public class TheCollectionsList {
     public static void main(String[] args) {
         /**
-         * List는 인터페이스,
-         * ArrayList는 구현체
+         * List는 인터페이스, ArrayList는 구현체
          */
         List<String> colors = new ArrayList();
 
@@ -53,8 +52,16 @@ public class TheList {
         );
 //        colorsUnmodifiable.add("pink"); // 에러 발생.
 
-
         System.out.println("colorsUnmodifiable = " + colorsUnmodifiable);
+
+
+        /**
+         * ArrayList vs LinkedList
+         */
+
+        List arrayList = new ArrayList();
+        List linkedList = new LinkedList();
+
     }
 
 

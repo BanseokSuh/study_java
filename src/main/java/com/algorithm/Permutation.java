@@ -1,5 +1,8 @@
 package com.algorithm;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Permutation {
     /**
      * 순열
@@ -8,23 +11,24 @@ public class Permutation {
      *   - 예를 들어 [1,2]와 [2,1]은 순서가 다르기 때문에 서로 다름
      */
 
-
     /**
-     * arr: 배열
-     * out: 순열
-     * visited:
-     * depth: 재귀 depth
-     * r: 뽑을 개수
+     * @param arr
+     * @param out
+     * @param visited
+     * @param depth
+     * @param r
      */
     public static void permutation(int[] arr, int[] out, boolean[] visited, int depth, int r) {
+        List<Integer> permutationList = new ArrayList<>();
+
         /**
          * 재귀 depth가 r과 같을 경우 log
          */
         if (depth == r) {
             for (int num : out) {
-                System.out.print(num);
+                permutationList.add(num);
             }
-            System.out.println();
+            System.out.println("Permutation list = " + permutationList);
             return;
         }
 
@@ -32,12 +36,11 @@ public class Permutation {
             if (!visited[i]) {
                 visited[i] = true;
                 out[depth] = arr[i];
-                permutation(arr, out, visited, depth + 1, r);
+                permutation(arr, out, visited, depth+1, r);
                 visited[i] = false;
             }
         }
     }
-
 
     /**
      * {1,2,3,4,5} 중에 3개를 뽑기
@@ -46,7 +49,10 @@ public class Permutation {
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5};
         int r = 3;
+        boolean[] visited = new boolean[arr.length];
+        int depth = 0;
+        int[] out = new int[r];
 
-        permutation(arr, new int[r], new boolean[arr.length], 0, r);
+        permutation(arr, out, visited, depth, r);
     }
 }

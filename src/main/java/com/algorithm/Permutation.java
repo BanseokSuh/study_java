@@ -18,7 +18,7 @@ public class Permutation {
      * @param depth
      * @param r
      */
-    public static void permutation(int[] arr, int[] out, boolean[] visited, int depth, int r) {
+    public static void permutation(int[] arr, int r, int[] out, boolean[] visited, int depth) {
         List<Integer> permutationList = new ArrayList<>();
 
         /**
@@ -36,7 +36,7 @@ public class Permutation {
             if (!visited[i]) {
                 visited[i] = true;
                 out[depth] = arr[i];
-                permutation(arr, out, visited, depth+1, r);
+                permutation(arr, r, out, visited, depth+1);
                 visited[i] = false;
             }
         }
@@ -49,10 +49,11 @@ public class Permutation {
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5};
         int r = 3;
+
+        int[] out = new int[r];
         boolean[] visited = new boolean[arr.length];
         int depth = 0;
-        int[] out = new int[r];
 
-        permutation(arr, out, visited, depth, r);
+        permutation(arr, r, out, visited, depth);
     }
 }
